@@ -27,7 +27,7 @@
 				}
 			},
 			{
-				"name": "Load Agg Salary",
+				"name": "Load Agg Salary Table",
 				"type": "Copy",
 				"dependsOn": [
 					{
