@@ -1,0 +1,28 @@
+{
+	"name": "salaryfileload",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "Salary",
+						"type": "DatasetReference"
+					},
+					"name": "Salary"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "SalaryTable",
+						"type": "DatasetReference"
+					},
+					"name": "SalaryLoad"
+				}
+			],
+			"transformations": [],
+			"script": "source(output(\n\t\tname as string,\n\t\tsalary as integer\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> Salary\nSalary sink(input(\n\t\tid as integer,\n\t\tcode as string,\n\t\tsalary as integer\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tdeletable:false,\n\tinsertable:true,\n\tupdateable:false,\n\tupsertable:false,\n\tformat: 'table',\n\tmapColumn(\n\t\tcode = name,\n\t\tsalary\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\terrorHandlingOption: 'stopOnFirstError') ~> SalaryLoad"
+		}
+	}
+}

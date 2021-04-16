@@ -1,0 +1,9 @@
+{
+	"name": "hemasoftdf",
+	"location": "uksouth",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "6364b584-b98c-4799-b718-f4e39b33618a",
+		"tenantId": "1a462d9d-59f5-4c80-9147-775de2f68ef0"
+	}
+}
